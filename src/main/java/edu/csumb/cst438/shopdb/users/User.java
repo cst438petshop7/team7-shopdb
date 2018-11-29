@@ -8,11 +8,13 @@ public class User {
     @Id
     private String id;
     private Username username;
+    private Password password;
     private Cart cart;
     private Credit credit;
 
-    public User (Username username, Cart cart, Credit credit) {
+    public User (Username username, Password password, Cart cart, Credit credit) {
         this.username = username;
+        this.password = password;
         this.cart = cart;
         this.credit = credit;
     }
@@ -23,6 +25,10 @@ public class User {
 
     public Username getUsername() {
         return this.username;
+    }
+    
+    public Password getPassword() {
+    	return this.password;
     }
 
     public Cart getCartItems() {
