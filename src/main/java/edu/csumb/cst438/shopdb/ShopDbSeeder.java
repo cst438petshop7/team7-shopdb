@@ -24,7 +24,7 @@ public class ShopDbSeeder implements CommandLineRunner {
         User John = new User(new Username("JohnDoe"), new Password("abc123"), new Cart(Arrays.asList("Laptop", "Speakers")), new Credit(100));
         User Jane = new User(new Username("JaneDoe"), new Password("abc123"), new Cart(Arrays.asList("Makeup", "Purse")), new Credit(75));
         User Jr = new User(new Username("JrDoe"), new Password("abc123"), new Cart(Arrays.asList("PS4", "Skyrim")), new Credit(10));
-        shopRepo.deleteAll();
+        shopRepo.deleteAll(); 
         List<User> users = Arrays.asList(John, Jane, Jr);
         shopRepo.saveAll(users);
     }
