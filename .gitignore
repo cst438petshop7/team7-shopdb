@@ -3,6 +3,7 @@
 
 ### IDE ###
 .vscode
+bin/
 
 ### STS ###
 .apt_generated
