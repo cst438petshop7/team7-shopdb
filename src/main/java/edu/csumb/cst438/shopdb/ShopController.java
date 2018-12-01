@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.csumb.cst438.shopdb.users.User;
@@ -19,4 +20,15 @@ public class ShopController {
         return users;
     }
 
+    @GetMapping("/id/{id}")
+    public User getUserbyId (@PathVariable String id){
+        User result = shopRepository.findByRepoId(id);
+        return result;
+    }
+
+    @GetMapping("/username/{username}")
+    public List<User> getByUserName(@PathVariable String username){
+        List<User> result = shopRepository.findByUsername(username);
+        return result;
+    }
 }

@@ -12,7 +12,7 @@ public class User {
     private Cart cart;
     private Credit credit;
 
-    public User (Username username, Password password, Cart cart, Credit credit) {
+    public User (Username username, Password password, Credit credit, Cart cart) {
         this.username = username;
         this.password = password;
         this.cart = cart;
