@@ -14,5 +14,5 @@ public interface IShopRepository extends MongoRepository<User, String> {
      User findByRepoId(String id);
 
      @Query (value = "{'username.username':?0}")
-     List<User> findByUsername(String username);
+     User findByUsername(String username);
 }

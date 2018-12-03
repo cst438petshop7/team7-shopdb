@@ -31,8 +31,8 @@ public class ShopController {
 
     @CrossOrigin(origins = "*")
     @GetMapping("/username/{username}")
-    public List<User> getByUserName(@PathVariable String username){
-        List<User> result = shopRepository.findByUsername(username);
+    public User getByUserName(@PathVariable String username){
+        User result = shopRepository.findByUsername(username);
         return result;
     }
 }
