@@ -39,4 +39,8 @@ public class User {
         return this.credit;
     }
 
+    public void setCredit(Credit credit) {
+        this.credit = credit;
+    }
+
 }
