@@ -3,11 +3,14 @@ package edu.csumb.cst438.shopdb;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.csumb.cst438.shopdb.users.Credit;
 import edu.csumb.cst438.shopdb.users.User;
 
 @RestController
@@ -35,4 +38,15 @@ public class ShopController {
         User result = shopRepository.findByUsername(username);
         return result;
     }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/update/{username}/{amount}")
+    ResponseEntity<User> updateProduct(@PathVariable String username, @PathVariable int amount) {
+        User userData = shopRepository.findByUsername(username);
+        if (userData == null) { return new ResponseEntity<>(HttpStatus.NOT_FOUND); }
+        userData.setCredit(new Credit(userData.getCredit().getCredit() - amount));
+        shopRepository.save(userData);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
