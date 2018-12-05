@@ -41,12 +41,12 @@ public class ShopController {
 
     @CrossOrigin(origins = "*")
     @GetMapping("/update/{username}/{amount}")
-    ResponseEntity<User> updateProduct(@PathVariable String username, @PathVariable int amount) {
+    public User updateProduct(@PathVariable String username, @PathVariable int amount) {
         User userData = shopRepository.findByUsername(username);
-        if (userData == null) { return new ResponseEntity<>(HttpStatus.NOT_FOUND); }
+        if (userData == null) { return null; }
         userData.setCredit(new Credit(userData.getCredit().getCredit() - amount));
         shopRepository.save(userData);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return userData;
     }
 
 }
