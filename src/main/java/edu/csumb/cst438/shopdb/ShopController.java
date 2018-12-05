@@ -41,7 +41,7 @@ public class ShopController {
 
     @CrossOrigin(origins = "*")
     @GetMapping("/update/{username}/{amount}")
-    public User updateProduct(@PathVariable String username, @PathVariable int amount) {
+    public User updateProduct(@PathVariable String username, @PathVariable double amount) {
         User userData = shopRepository.findByUsername(username);
         if (userData == null) { return null; }
         userData.setCredit(new Credit(userData.getCredit().getCredit() - amount));
