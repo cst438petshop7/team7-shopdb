@@ -3,8 +3,6 @@ package edu.csumb.cst438.shopdb;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,6 +43,16 @@ public class ShopController {
         User userData = shopRepository.findByUsername(username);
         if (userData == null) { return null; }
         userData.setCredit(new Credit(userData.getCredit().getCredit() - amount));
+        shopRepository.save(userData);
+        return userData;
+    }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/increase/{username}/{amount}")
+    public User increaseProduct(@PathVariable String username, @PathVariable double amount) {
+        User userData = shopRepository.findByUsername(username);
+        if (userData == null) { return null; }
+        userData.setCredit(new Credit(userData.getCredit().getCredit() + amount));
         shopRepository.save(userData);
         return userData;
     }
