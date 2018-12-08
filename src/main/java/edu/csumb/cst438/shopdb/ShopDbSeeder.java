@@ -21,9 +21,9 @@ public class ShopDbSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        User John = new User(new Username("JohnDoe"), new Password("abc123"), new Credit(100000), new Cart(Arrays.asList("item", "item")));
-        User Jane = new User(new Username("JaneDoe"), new Password("abc123"),new Credit(100000), new Cart(Arrays.asList("item", "item")));
-        User Jr = new User(new Username("JrDoe"), new Password("abc123"), new Credit(50000), new Cart(Arrays.asList("item", "item")));
+        User John = new User(new Username("JohnDoe"), new Password("abc123"), new Credit(1000), new Cart(Arrays.asList("item", "item")));
+        User Jane = new User(new Username("JaneDoe"), new Password("abc123"),new Credit(500), new Cart(Arrays.asList("item", "item")));
+        User Jr = new User(new Username("JrDoe"), new Password("abc123"), new Credit(10), new Cart(Arrays.asList("item", "item")));
         shopRepo.deleteAll(); 
         List<User> users = Arrays.asList(John, Jane, Jr);
         shopRepo.saveAll(users);
